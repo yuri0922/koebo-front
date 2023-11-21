@@ -8,6 +8,6 @@ type Todo = {
 type TodoResponse = Todo[];
 
 export const useGetTodoList = () => {
-  const { data, error } = useSWR<TodoResponse>("/todos");
-  return { data, error };
+  const { data, error, mutate } = useSWR<TodoResponse>("/todos");
+  return { data, error, mutate };
 };

@@ -4,7 +4,7 @@ import { usePostTodo } from "@/hooks/api/todo/usePostTodo";
 import { useState } from "react";
 
 const Todo = () => {
-  const { data } = useGetTodoList();
+  const { data, mutate } = useGetTodoList();
   const { deleteTodo } = useDeleteTodo();
   const [text, setText] = useState("");
   const { postTodo } = usePostTodo();
@@ -21,9 +21,9 @@ const Todo = () => {
         />
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
-          onClick={() => {
-            alert(text + "がクリックされました");
-            postTodo(text);
+          onClick={async () => {
+            await postTodo(text);
+            mutate();
           }}
         >
           作成！
@@ -34,9 +34,10 @@ const Todo = () => {
           <div key={todo.id}>
             <p
               className="cursor-pointer"
-              onClick={() => {
+              onClick={async () => {
                 console.log(todo.text + "がクリックされました");
-                deleteTodo(todo.id);
+                await deleteTodo(todo.id);
+                mutate();
               }}
             >
               {todo.text}
