@@ -1,8 +1,8 @@
-import { createApiClient } from "@/libs/apiClient";
+import { useAxios } from "./useAxios";
 
 export const useFetcher = () => {
+  const { axios } = useAxios();
   const fetcher = async (url: string) => {
-    const axios = createApiClient();
     const { data } = await axios.get(url);
     return data;
   };

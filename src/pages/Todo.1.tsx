@@ -1,7 +1,7 @@
 import { useDeleteTodo } from "@/hooks/api/todo/useDeleteTodo";
 import { useGetTodoList } from "@/hooks/api/todo/useGetTodoList";
 
-const Todo = () => {
+export const Todo = () => {
   const { data } = useGetTodoList();
   const { deleteTodo } = useDeleteTodo();
   return (
@@ -13,8 +13,8 @@ const Todo = () => {
             <p
               className="cursor-pointer"
               onClick={() => {
-                console.log(todo.text + "がクリックされました");
-                deleteTodo(todo.id);
+                deleteTodo;
+                alert(todo.text);
               }}
             >
               {todo.text}
@@ -24,5 +24,3 @@ const Todo = () => {
     </div>
   );
 };
-
-export default Todo;
