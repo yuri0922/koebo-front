@@ -21,7 +21,7 @@ const Article = () => {
   }, [selectedFile]);
 
   return (
-    <div className="px-16">
+    <div className="px-6 lg:px-16">
       <input
         ref={imageFormRef}
         type="file"
@@ -60,13 +60,13 @@ const Article = () => {
         </div>
       )}
       <div className="my-4 ml-2">
-        <div className="flex w-full items-center gap-2">
+        <div>
           <label className="whitespace-nowrap" htmlFor="title">
             タイトル
           </label>
           <input
             id="title"
-            placeholder="ここにタイトルを入力"
+            placeholder="例:洗濯バサミで使いかけの袋を留める"
             className="w-full rounded-md border-2 border-gray-700 bg-orange-50 p-1"
             type="text"
             onChange={(e) => {
@@ -75,24 +75,12 @@ const Article = () => {
           />
         </div>
         <div>
-          <label htmlFor="price">値段</label>
-          <input
-            id="price"
-            className="border-2 border-gray-500 py-2"
-            type="number"
-            onChange={(e) => {
-              const price = Number(e.target.value);
-              setPrice(price);
-            }}
-          />
-        </div>
-        <div>
-          <label htmlFor="level">レベル</label>
+          <label htmlFor="level">難易度</label>
           <input
             min="1"
             max="5"
             id="level"
-            className="border-2 border-gray-500 py-2"
+            className="w-full rounded-md border-2 border-gray-700 bg-orange-50 p-1"
             type="number"
             onChange={(e) => {
               const level = Number(e.target.value);
@@ -101,44 +89,47 @@ const Article = () => {
           />
         </div>
         <div>
-          <label htmlFor="image">写真</label>
+          <label htmlFor="price">値段</label>
           <input
-            id="image"
-            className="border-2 border-gray-500 py-2"
-            type="text"
+            id="price"
+            placeholder="例:500"
+            className="w-full rounded-md border-2 border-gray-700 bg-orange-50 p-1"
+            type="number"
             onChange={(e) => {
-              setImage(e.target.value);
+              const price = Number(e.target.value);
+              setPrice(price);
             }}
           />
         </div>
         <div>
-          <label htmlFor="content">内容</label>
-          <input
+          <label htmlFor="content">使い方</label>
+          <textarea
             id="content"
-            className="border-2 border-gray-500 py-2"
-            type="text"
+            placeholder="便利な使い方を詳しく教えてください♩"
+            className="w-full rounded-md border-2 border-gray-700 bg-orange-50 p-1"
             onChange={(e) => {
               setContent(e.target.value);
             }}
           />
         </div>
-
-        <button
-          className="ml-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-          onClick={async () => {
-            await postArticle({
-              title: title,
-              content: content,
-              user_id: 1,
-              price: price,
-              image: image,
-              level: level,
-            });
-            mutate();
-          }}
-        >
-          作成！
-        </button>
+        <div className="mt-4 flex justify-end">
+          <button
+            className="rounded bg-lime-500 px-4 py-2 font-bold text-white hover:bg-lime-700"
+            onClick={async () => {
+              await postArticle({
+                title: title,
+                content: content,
+                user_id: 1,
+                price: price,
+                image: image,
+                level: level,
+              });
+              mutate();
+            }}
+          >
+            投稿！
+          </button>
+        </div>
       </div>
       {data &&
         data.map((article) => (
