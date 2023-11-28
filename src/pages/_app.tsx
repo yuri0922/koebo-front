@@ -1,3 +1,4 @@
+import { Header } from "@/components/layouts/Header";
 import { useFetcher } from "@/hooks/useFetcher";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
@@ -13,7 +14,12 @@ export default function App({ Component, pageProps }: AppProps) {
         revalidateOnReconnect: false,
       }}
     >
-      <Component {...pageProps} />
+      <div className="w-full h-screen bg-orange-50">
+        <div className="mx-auto w-[600px] bg-white border-x border-orange-200 shadow-sm">
+          <Header />
+          <Component {...pageProps} />
+        </div>
+      </div>
     </SWRConfig>
   );
 }

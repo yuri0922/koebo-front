@@ -1,3 +1,12 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends":[ "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "max-len": ["warn", { "code": 120 ,"ignorePattern": "^import\\s.+\\sfrom\\s.+;$"}],
+    "@next/next/no-img-element": "off"
+  }
 }
