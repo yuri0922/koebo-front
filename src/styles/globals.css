@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+      /* ここでフォントを変える↓ */
+  /* font-family: 'Kiwi Maru', serif; */
+}
