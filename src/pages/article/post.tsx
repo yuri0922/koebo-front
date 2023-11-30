@@ -34,6 +34,7 @@ const Article = () => {
           }
         }}
       />
+
       {imageSrc ? (
         <img
           src={imageSrc}
@@ -80,14 +81,71 @@ const Article = () => {
             min="1"
             max="5"
             id="level"
-            className="w-full rounded-md border-2 border-gray-700 bg-orange-50 p-1"
             type="number"
             onChange={(e) => {
               const level = Number(e.target.value);
               setLevel(level);
             }}
           />
+
+          <div className="flex items-start justify-around">
+            <div
+              onClick={() => {
+                setLevel(1);
+              }}
+            >
+              <img
+                src={level >= 1 ? '/icons/yellowstar.svg' : '/icons/star1.svg'}
+                alt=""
+                className=" w-10 border-spacing-1 cursor-pointer"
+              />
+              <p className=" text-sm text-gray-500">優しい</p>
+            </div>
+            <img
+              onClick={() => {
+                setLevel(2);
+              }}
+              src={level >= 2 ? '/icons/yellowstar.svg' : '/icons/star2.svg'}
+              alt=""
+              className=" w-10 border-spacing-1 cursor-pointer"
+            />
+            <div>
+              <img
+                onClick={() => {
+                  setLevel(3);
+                }}
+                src={level >= 3 ? '/icons/yellowstar.svg' : '/icons/star3.svg'}
+                alt=""
+                className=" w-10 border-spacing-1 cursor-pointer"
+              />
+              <p className=" ml-1 text-sm text-gray-700">普通</p>
+            </div>
+
+            <img
+              onClick={() => {
+                setLevel(4);
+              }}
+              src={level >= 4 ? '/icons/yellowstar.svg' : '/icons/star4.svg'}
+              alt=""
+              className=" w-10 border-spacing-1 cursor-pointer"
+            />
+            <div>
+              <div
+                onClick={() => {
+                  setLevel(5);
+                }}
+              >
+                <img
+                  src={level >= 5 ? '/icons/yellowstar.svg' : '/icons/star5.svg'}
+                  alt=""
+                  className=" w-10 border-spacing-1 cursor-pointer"
+                />
+                <p className=" text-sm text-gray-800">難しい</p>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div>
           <label htmlFor="price">値段</label>
           <input
@@ -145,5 +203,4 @@ const Article = () => {
     </div>
   );
 };
-
 export default Article;
