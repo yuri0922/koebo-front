@@ -34,7 +34,6 @@ const Article = () => {
           }
         }}
       />
-
       {imageSrc ? (
         <img
           src={imageSrc}
@@ -189,18 +188,8 @@ const Article = () => {
           </button>
         </div>
       </div>
-      {data &&
-        data.map((article) => (
-          <div key={article.id} className="flex gap-1">
-            <p>{article.user_id}</p>
-            <p>{article.title}</p>
-            <p>{article.level}</p>
-            <p>{article.price}</p>
-            <p>{article.image}</p>
-            <p>{article.content}</p>
-          </div>
-        ))}
     </div>
   );
 };
+
 export default Article;
